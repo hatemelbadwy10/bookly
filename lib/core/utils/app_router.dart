@@ -1,5 +1,6 @@
 import 'package:bookly/features/home/presentation/views/book_deatils_view.dart';
 import 'package:bookly/features/home/presentation/views/home_view.dart';
+import 'package:bookly/features/search/presentation/views/search_view.dart';
 import 'package:bookly/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -23,8 +24,18 @@ abstract class AppRouter{
       path: kBookDetailsView,
       builder: (BuildContext context, GoRouterState state) {
         return const BookDetailsView();
+
       },
     ),
+
+    GoRoute(
+      path: kSearchView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const SearchView();
+
+      },
+    ),
+
   ]
   );
 }
