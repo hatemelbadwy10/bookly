@@ -1,6 +1,8 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
@@ -13,15 +15,20 @@ class BestSellerListViewItem extends StatelessWidget {
       child: Row(
 
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height * .2,
-            width: MediaQuery.of(context).size.width * .3,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                image: const DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage(AssetsData.testImage),
-                )),
+          GestureDetector(
+            onTap: (){
+              GoRouter.of(context).push(AppRouter.kBookDetailsView);
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height * .2,
+              width: MediaQuery.of(context).size.width * .3,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  image: const DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(AssetsData.testImage),
+                  )),
+            ),
           ),
           const SizedBox( width: 10,),
           const Expanded(
