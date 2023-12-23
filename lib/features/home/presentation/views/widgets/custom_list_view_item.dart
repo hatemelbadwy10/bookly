@@ -11,20 +11,23 @@ class CustomListViewItem extends StatelessWidget {
       onTap: (){
         GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
-      child: Container(
-        height: MediaQuery.of(context).size.height*.45,
-        width: MediaQuery.of(context).size.width*.40,
-        decoration:  BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            image:
-            const DecorationImage(
-              fit: BoxFit.fill,
+      child: AspectRatio(
+        aspectRatio: 150/243,
+        child: Container(
+          //height: MediaQuery.of(context).size.height*.2,
+          width: MediaQuery.of(context).size.width*.30,
+          decoration:  BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
               image:
-              AssetImage(
-                  AssetsData.testImage
-              ),
-            )
-
+              const DecorationImage(
+                fit: BoxFit.fill,
+                image:
+                AssetImage(
+                    AssetsData.testImage
+                ),
+              )
+        
+          ),
         ),
       ),
     );
