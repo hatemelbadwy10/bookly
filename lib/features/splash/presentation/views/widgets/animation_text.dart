@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class AnimationText extends StatelessWidget {
   const AnimationText({
     super.key,
@@ -12,12 +13,13 @@ class AnimationText extends StatelessWidget {
     return AnimatedBuilder(
       animation: animationSlider,
       builder: (BuildContext context, _) {
-        return  SlideTransition(
-
-            position: animationSlider  ,
-            child: const Text('read books free',textAlign: TextAlign.center,));
+        return SlideTransition(
+            position: animationSlider,
+            child: const Text(
+              'read books free',
+              textAlign: TextAlign.center,
+            ));
       },
-
     );
   }
 }

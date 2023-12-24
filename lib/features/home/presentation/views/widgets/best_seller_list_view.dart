@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'best_seller_list_view_item.dart';
+
 class BestSellerListView extends StatelessWidget {
   const BestSellerListView({super.key});
 
@@ -8,8 +9,7 @@ class BestSellerListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: 10,
-     
-        physics:  const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return const BestSellerListViewItem();
         });

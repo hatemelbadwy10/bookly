@@ -25,16 +25,14 @@ class HomeViewBody extends StatelessWidget {
                 'Best Seller',
                 style: Styles.textStyle18,
               ),
-            //  BestSellerListView()
+              //  BestSellerListView()
             ],
           ),
         )),
         SliverFillRemaining(
-          child:  BestSellerListView(),
+          child: BestSellerListView(),
         )
       ],
     );
-
-
   }
 }

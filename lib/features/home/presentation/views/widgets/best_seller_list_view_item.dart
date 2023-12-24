@@ -13,10 +13,9 @@ class BestSellerListViewItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
-
         children: [
           GestureDetector(
-            onTap: (){
+            onTap: () {
               GoRouter.of(context).push(AppRouter.kBookDetailsView);
             },
             child: Container(
@@ -30,37 +29,38 @@ class BestSellerListViewItem extends StatelessWidget {
                   )),
             ),
           ),
-          const SizedBox( width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Harry Potterand',
-                style: Styles.textStyle20,
+                Text(
+                  'Harry Potterand',
+                  style: Styles.textStyle20,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                Text('J.K. Rowling',
-                style: Styles.textStyle14,
+                Text(
+                  'J.K. Rowling',
+                  style: Styles.textStyle14,
                 ),
                 Row(
                   children: [
-                    Text('19.9',
-                    style: Styles.textStyle20,),
+                    Text(
+                      '19.9',
+                      style: Styles.textStyle20,
+                    ),
                     Spacer(),
                     RatingBookItem()
-            
-            
-            
                   ],
                 )
               ],
             ),
           )
         ],
-
       ),
     );
   }
 }
-

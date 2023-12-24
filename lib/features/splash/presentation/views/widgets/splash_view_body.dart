@@ -3,9 +3,9 @@ import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 import '../../../../../constants.dart';
 import 'animation_text.dart';
+
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
@@ -13,8 +13,9 @@ class SplashViewBody extends StatefulWidget {
   State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProviderStateMixin{
- late AnimationController animationController;
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
   late Animation<Offset> animationSlider;
   @override
   void initState() {
@@ -31,42 +32,34 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     }
 
     animationSlider.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
   void navigateToHomeView() {
-    Future.delayed(kTranstionDuration,
-        (){
-
+    Future.delayed(kTranstionDuration, () {
       //Get.to(()=> const HomeView(),transition: Transition.fade,duration: kTranstionDuration);
-          GoRouter.of(context).push(AppRouter.kHomeView);
-        }
-    );
+      GoRouter.of(context).push(AppRouter.kHomeView);
+    });
   }
 
   void initSlidingAnimation() {
-    animationController=AnimationController(vsync: this,duration: kTranstionDuration);
-    animationSlider =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(animationController);
+    animationController =
+        AnimationController(vsync: this, duration: kTranstionDuration);
+    animationSlider = Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+        .animate(animationController);
 
     animationController.forward();
   }
+
   @override
   Widget build(BuildContext context) {
-
-    return  Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-       Image.asset(AssetsData.logo),
+        Image.asset(AssetsData.logo),
         AnimationText(animationSlider: animationSlider),
-
-
-
       ],
     );
   }
