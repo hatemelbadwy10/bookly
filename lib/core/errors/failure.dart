@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
-
 abstract class Failure{
   final String errMassage;
   Failure(this.errMassage);
 }
 class ServerFailure  extends Failure{
   ServerFailure(super.errMassage);
-    factory ServerFailure.fromDioError(DioError dioError ){
-      switch(dioError.type){
+    factory ServerFailure.fromDioException(DioException dioException ){
+      switch(dioException.type){
         case DioExceptionType.connectionTimeout:
        return ServerFailure('connectionTimeout');
         case DioExceptionType.sendTimeout:
@@ -17,13 +16,35 @@ class ServerFailure  extends Failure{
         case DioExceptionType.badCertificate:
           return ServerFailure('badCertificate');
         case DioExceptionType.badResponse:
-          return ServerFailure('badCertificate');
+         return ServerFailure.fromRespond(dioException.response!.statusCode!, dioException.response!.data);
         case DioExceptionType.cancel:
-          return ServerFailure('badResponse');
+          return ServerFailure('api service request canceled');
         case DioExceptionType.connectionError:
           return ServerFailure('connectionError');
         case DioExceptionType.unknown:
-          return ServerFailure('badCertificate');
+          if(dioException.message!.contains('socketException')){
+
+            return ServerFailure('NO INTERNET');
+          }
+          else {
+            return ServerFailure('unknown error');
+          }
+
       }
       }
+      factory ServerFailure.fromRespond(int statusCode,dynamic respond){
+      if( statusCode==400 || statusCode ==401 || statusCode==403){
+        return  ServerFailure(respond['error']['message']);
+
+      }
+      else if (statusCode==404) {
+        return  ServerFailure('404 not found');
+      }
+      else if (statusCode==500) {
+        return  ServerFailure('server not available');
+      }
+      else {
+        return ServerFailure('oops there is a error try again letter');
+      }
+    }
 }
