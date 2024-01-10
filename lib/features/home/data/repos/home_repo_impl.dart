@@ -5,17 +5,24 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../core/utils/api_services.dart';
 class HomeRepoImpl implements HomeRepo{
- final AppServices appServices ;
+ final ApiServices appServices ;
 
   HomeRepoImpl(this.appServices);
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks()   async{
     try {
-      var data= await appServices.get('volumes?Filtering=free-ebooks&q=subject:programming&sorting=newest');
+      var data= await appServices.get(  endPoint: 'volumes?Filtering=free-ebooks&q=proggraming&sorting=newest');
       List<BookModel> books =[];
       for( var items in data['items']){
-        books.add(BookModel.fromJson(items));
-      }
+        try{
+          books.add(BookModel.fromJson(items));
+          print('iam here');
+
+        }
+        catch (e) {
+          books.add(BookModel.fromJson(items));
+        }
+          }
       return right(books);
     } on Exception catch (e) {
      if (e is DioException) {
@@ -29,7 +36,7 @@ class HomeRepoImpl implements HomeRepo{
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async{
 
     try {
-      var data= await appServices.get('volumes?Filtering=free-ebooks&q=subject:programming&');
+      var data= await appServices.get(endPoint: 'volumes?Filtering=free-ebooks&q=programing&sorting=newest&');
       List<BookModel> books =[];
       for( var items in data['items']){
         books.add(BookModel.fromJson(items));

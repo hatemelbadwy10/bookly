@@ -12,7 +12,7 @@ class SimilarListView extends StatelessWidget {
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return const CustomListViewItem();
+            return const CustomListViewItem(imageUrl: 'state.books[index].volumeInfo.imageLinks.thumbnail',);
           }),
     );
   }

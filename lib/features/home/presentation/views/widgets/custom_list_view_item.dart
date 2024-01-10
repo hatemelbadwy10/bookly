@@ -4,7 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/assets.dart';
 
 class CustomListViewItem extends StatelessWidget {
-  const CustomListViewItem({super.key});
+  const CustomListViewItem({super.key, required this.imageUrl});
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +20,9 @@ class CustomListViewItem extends StatelessWidget {
           width: MediaQuery.of(context).size.width * .30,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              image: const DecorationImage(
+              image:  DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage(AssetsData.testImage),
+                image: NetworkImage(imageUrl),
               )),
         ),
       ),

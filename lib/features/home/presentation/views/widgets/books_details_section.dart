@@ -15,7 +15,7 @@ class BooksDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .26),
-          child: const CustomListViewItem(),
+          child:  const CustomListViewItem(imageUrl: 'https://www.canva.com/p/templates/EAFaQMYuZbo-brown-rusty-mystery-novel-book-cover/'),
         ),
         const SizedBox(
           height: 40,
