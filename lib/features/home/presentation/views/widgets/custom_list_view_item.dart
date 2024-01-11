@@ -1,31 +1,18 @@
 import 'package:bookly/core/utils/app_router.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/assets.dart';
+import 'custom_cashed_image.dart';
 
 class CustomListViewItem extends StatelessWidget {
-  const CustomListViewItem({super.key, required this.imageUrl});
+  const CustomListViewItem({super.key, required this.imageUrl, required this.bookModel});
   final String imageUrl;
+    final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
-      },
-      child: AspectRatio(
-        aspectRatio: 150 / 243,
-        child: Container(
-          //height: MediaQuery.of(context).size.height*.2,
-          width: MediaQuery.of(context).size.width * .30,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              image:  DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(imageUrl),
-              )),
-        ),
-      ),
-    );
+    return CustomCashedImage(imageUrl: imageUrl, bookModel: bookModel,);
   }
 }
