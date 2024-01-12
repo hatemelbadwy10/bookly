@@ -8,4 +8,5 @@ final getIt = GetIt.instance;
  void setupServiceLocator()  {
  getIt.registerSingleton<ApiServices>(ApiServices(Dio()));
  getIt.registerSingleton<HomeRepoImpl>(HomeRepoImpl( getIt.get<ApiServices>()));
+ //getIt.registerSingleton<SearchRepoImpl>(SearchRepoImpl(getIt.get<ApiServices>(), ' String as String category'));
 }

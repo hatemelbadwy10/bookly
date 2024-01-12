@@ -1,4 +1,3 @@
-import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/service_locator.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/manger/similar_book_cubit/similar_books_cubit.dart';
@@ -42,9 +41,11 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kSearchView,
-      builder: (BuildContext context, GoRouterState state) {
-        return const SearchView();
-      },
-    ),
-  ]);
+  builder: (context, state) => const SearchView(),
+
+        ),
+
+
+  ]
+  );
 }
