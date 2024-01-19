@@ -10,8 +10,8 @@ import 'constants.dart';
 import 'features/home/presentation/manger/featured_book_cubit/featured_book_cubit.dart';
 import 'features/home/presentation/manger/newest_book_cubit/newest_book_cubit.dart';
 
-void main()  {
-    setupServiceLocator();
+void main() async {
+    await setupServiceLocator();
   runApp(const BooklyApp());
 }
 

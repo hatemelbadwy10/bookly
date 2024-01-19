@@ -6,17 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'custom_search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key, required this.bookModel});
-final BookModel bookModel;
+  const SearchViewBody({super.key,});
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return  const SafeArea(
       child: Column(
         children: [
-          const CustomSearchTextField(),
+          CustomSearchTextField(),
           Expanded(
 
-              child: SearchResultListView(bookModel: bookModel,)
+              child: SearchResultListView()
           ),
         ],
       ),

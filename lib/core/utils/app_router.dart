@@ -48,8 +48,8 @@ abstract class AppRouter {
   builder: (context, state) => BlocProvider(
       create: (context)=>  SearchCubit(SearchRepoImpl(ApiServices(Dio()))) ,
       
-      child:  SearchView(
-        bookModel: state.extra as BookModel,
+      child:  const SearchView(
+
       )),
 
         ),

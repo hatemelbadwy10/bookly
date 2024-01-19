@@ -28,9 +28,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
     void dispose() {
       super.dispose();
 
-      animationController.dispose();
-    }
 
+    }
+    animationController.dispose();
     animationSlider.addListener(() {
       setState(() {});
     });
@@ -39,7 +39,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToHomeView() {
     Future.delayed(kTranstionDuration, () {
       //Get.to(()=> const HomeView(),transition: Transition.fade,duration: kTranstionDuration);
-      GoRouter.of(context).push(AppRouter.kHomeView);
+      GoRouter.of(context).replace(AppRouter.kHomeView);
     });
   }
 

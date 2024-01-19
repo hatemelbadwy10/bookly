@@ -5,9 +5,10 @@ import 'package:bookly/features/search/presentation/manger/search_cubit/search_c
 import 'package:flutter/material.dart'
 ;
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../home/presentation/views/widgets/best_seller_list_view_item.dart';
 class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key, required this.bookModel});
-final BookModel bookModel;
+  const SearchResultListView({super.key, });
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SearchCubit, SearchState>(
@@ -20,8 +21,8 @@ final BookModel bookModel;
           return  Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child:
-              CustomCashedImage(imageUrl: bookModel.volumeInfo.imageLinks.thumbnail, bookModel: bookModel)
-            //BestSellerListViewItem(),
+              //CustomCashedImage(imageUrl: bookModel.volumeInfo.imageLinks.thumbnail, bookModel: bookModel)
+            BestSellerListViewItem(bookModel: state.books[index],),
           );
         },
       );
@@ -30,8 +31,11 @@ final BookModel bookModel;
       return CustomErrorMassage(errMassage: state.errMasage);
 
     }
-    else{
+    else if(state is SearchLoading){
       return const Center(child: CircularProgressIndicator());
+    }
+    else{
+      return Container();
     }
 
   },

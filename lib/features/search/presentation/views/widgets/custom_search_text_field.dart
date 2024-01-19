@@ -1,13 +1,21 @@
+import 'package:bookly/features/search/presentation/manger/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({super.key,  this.onChanged});
-  final void Function(String)? onChanged;
+  const CustomSearchTextField({super.key,  });
+  //final void Function(String)? onSubmitted;
   @override
   Widget build(BuildContext context) {
+    final SearchCubit searchCubit = context.read<SearchCubit>();
     return TextField(
-      onChanged: onChanged,
+     onSubmitted: (value) async{
+
+       print(value);
+       await searchCubit.fetchSearchBooks(value);
+
+     } ,
       decoration: InputDecoration(
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
