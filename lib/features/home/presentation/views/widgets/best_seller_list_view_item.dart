@@ -39,7 +39,7 @@ final  BookModel bookModel;
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                   bookModel.volumeInfo.authors == Null ? "not found" : bookModel.volumeInfo.authors![0],
+                   bookModel.volumeInfo.authors is Null ? "not found" : bookModel.volumeInfo.authors![0],
                     style: Styles.textStyle14,
                   ),
                    Row(
